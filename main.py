@@ -15,7 +15,7 @@ def send_message():
         check_reg = reg_check(phone_number, message)
 
         if not check_reg:
-            return 'check your details correctly'
+            return {"message":'check your details correctly'}
         else:
             client = Client(account_sid, auth_token)
 
@@ -24,9 +24,13 @@ def send_message():
                 from_=from_phno,
                 body=message)
 
-            return 'Message sent successfully!'
+            return {"message":'Message sent successfully!'}
     except:
-        return 'Provide the details please'
+        return {"message":'Provide the details please'}
+
+@app.route('/readme', methods=['GET'])
+def readme():
+    return {"message": "Success message"}
 
 
 if __name__ == '__main__':
