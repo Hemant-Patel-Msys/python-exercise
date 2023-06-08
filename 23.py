@@ -1,14 +1,13 @@
-def highest_sum(st:str):
-    temp = 0
-    st = set(st)
-    for i in st:
-        temp += int(i)
-    new_st = str(temp)
-    set_list = list(new_st)
-    if set_list == list(set(set_list)):
-        return new_st
-    else :
-        return highest_sum(new_st)
+row = int(input("Enter the row number: "))
 
-obj = highest_sum("1211")
-print(obj)
+for i in range(row):
+    for j in range(row-i):
+        print(' ', end='')
+
+    for j in range(2*i+1):
+        if j==0 or j==2*i:
+            print('*',end='')
+        else:
+            print('_', end='')
+
+    print()

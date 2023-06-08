@@ -1,13 +1,8 @@
-from threading import Event
+import pickle
+dct = {111: "Eric", 112: "Kyle", 113: "Butters"}
+with open("test.txt","wb") as file:
+    pickle.dump(dct,file)
 
-def stars(n):
-    for i in range(n,0,-1):
-        for j in range(0, n-i):
-            print(end=" ")
-        for j in range(0,i):
-            print("*", end=" ")
-        print()
-
-for i in range(5):
-    stars(7)
-    Event().wait(3)
+with open("test.txt","rb") as file:
+    dct2 = pickle.load(file)
+print(dct2[112])

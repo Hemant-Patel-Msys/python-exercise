@@ -1,21 +1,25 @@
-from contextlib import contextmanager
+import math
+
+def squrt(n):
+    return math.sqrt(n)
+
+def cube(n):
+    return n**3
 
 
-@contextmanager
-def example_cm(string_input):
-    print('Setup logic\n')
-
-    swapped = string_input.swapcase()
-    try:
-        yield swapped
-    except ValueError as e:
-        print('An error occurred...')
-    finally:
-        print('\nTeardown logic\n')
-
-    print('End of context manager\n')
+def square(n):
+    return n**2
 
 
-with example_cm('the MAJESTIC squirrel') as swapped_string:
-    # Managed code
-    print(swapped_string)
+print(square(5000000))
+
+print(squrt(5000000))
+
+print(cube(5000000))
+
+
+
+
+
+
+

@@ -1,37 +1,16 @@
-from flask import Flask
-from flask import request
-from twilio.rest import Client
-from details import account_sid, auth_token, from_phno
-from regularExpression import reg_check
+# This is a sample Python script.
 
-app = Flask(__name__)
+# Press Shift+F10 to execute it or replace it with your code.
+# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 
 
-@app.route('/send_message', methods=['POST'])
-def send_message():
-    phone_number = request.json['phone_number']
-    message = request.json['message']
-
-    check_reg = reg_check(phone_number, message)
-
-    if not check_reg:
-        return {"message": 'check your details correctly'}
-    else:
-        client = Client(account_sid, auth_token)
-
-        message = client.messages.create(
-            to=phone_number,
-            from_=from_phno,
-            body=message)
-
-        return {"message": 'Message sent successfully!'}
+def print_hi(name):
+    # Use a breakpoint in the code line below to debug your script.
+    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
 
 
-
-@app.route('/readme', methods=['GET'])
-def readme():
-    return {"message": "Success message"}
-
-
+# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    app.run(debug=True)
+    print_hi('PyCharm')
+
+# See PyCharm help at https://www.jetbrains.com/help/pycharm/

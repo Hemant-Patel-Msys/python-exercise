@@ -1,23 +1,24 @@
-# 19. Write a function that takes two strings representing dates and returns the string
-# that represents the earliest point in time ? Ex. get_earliest("01/27/1832",
-# "01/27/1756") return '01/27/1756'.
+import datetime
 
-from datetime import datetime
-d1 = "01/27/1832"
-d2 = "01/27/1756"
+dt_Str = "2020-01-15 09:03:32.744178"
 
-
-
-
-def earlist_year(d1,d2):
-    d1 = d1.replace("/", ",")
-    d2 = d2.replace("/", ",")
-    d1 = datetime.strptime(d1, "%m,%d,%Y").date()
-    d2 = datetime.strptime(d2, "%m,%d,%Y").date()
-    a = min(d1,d2)
-    return f"{a.month}\{a.day}\{a.year}"
-
-print(earlist_year(d1,d2))
+get_year = lambda x:x.year
+get_month = lambda x:x.month
+get_day = lambda x:x.day
+get_time = lambda x:x.time()
 
 
-    
+dt_obj = datetime.datetime.strptime(dt_Str,"%Y-%m-%d %H:%M:%S.%f")
+
+year = get_year(dt_obj)
+month = get_month(dt_obj)
+day = get_day(dt_obj)
+time = get_time(dt_obj)
+
+
+
+print("Year: ",year)
+print("Month: ",month)
+print("Date: ",day)
+print("Time: ",time)
+

@@ -1,37 +1,17 @@
-class Bank:
-    def __init__(self, balance=0):
-        self.balance = balance
+import inspect
+def test(x1, x2, x3=10):
+    pass
 
-    def deposit(self, amount):
-        self.balance = self.balance + amount
-        return self.balance
+argp = inspect.getfullargspec(test)
+print(argp.args)
 
-    def withdraw(self, amount):
-        self.balance = self.balance - amount
-        return self.balance
+print(argp.defaults)
 
-    def check_bal(self):
-        return self.balance
+args_with_default = dict(zip(argp.args[-len(argp.defaults):],argp.defaults))
+print(args_with_default)
 
+print(argp.varargs)
 
-b = Bank()
-while True:
-    content = """
-    What do you want 
-    1. Check Balance 
-    2. Deposit amount
-    3. Withdraw the amount
-    4. Exit
-    """
-    print(content)
-    user = int(input("Enter your choice:- "))
-    if user == 1:
-        print("Your account balance is ",b.balance)
-    elif user == 2:
-        d = int(input("Enter the amount to deposit:-"))
-        print(b.deposit(d))
-    elif user == 3:
-        w = int(input("Enter the amount to withdraw:-"))
-        print(b.withdraw(w))
-    elif user == 4:
-        exit()
+print(argp.varkw)
+
+print(argp.annotations)

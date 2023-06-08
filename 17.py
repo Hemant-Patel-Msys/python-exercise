@@ -1,20 +1,15 @@
-def findAlphaCount(s):
-    op = ""
-    count = 1
-    for i in range(len(s)):
-        if i>=len(s):
-            break
-        elif s[i].isalpha():
-            op += s[i]
-            while s[i] == s[i+1]:
-                count += 1
-                s = s[:i]+s[i+1:]
-            op += str(count)
-            count = 1
-        elif s[i].isdigit():
-            op += s[i]
-    return op
+def calculate_points(*teams):
+    t = []
+    for team in teams:
+        t.append(team[0]*3 + team[1]*1 + team[2]*(-1))
+    sum = max(t)
+    index = t.index(sum)
+    return f"Winner: Team{index+1}"
 
-s = 'abb24ccc8ddbbca1'
-obj = findAlphaCount(s)
-print(obj)
+Team1 = (3,4,2)
+Team2 = (5,0,2)
+Team3 = (0,0,1)
+
+f = calculate_points(Team1,Team2,Team3)
+print(f)
+

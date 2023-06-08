@@ -1,14 +1,12 @@
-def float_range(start,stop,step):
-    while start < stop:
-        yield start
-        start += step
+import sys
 
-start = 0.5
-stop = 2.5
-step = 0.5
+def long_lines(*filenames):
+    for filename in filenames:
+        with open(filename) as file:
+            yield from (line.rstrip() for line in file if len(line) > 40)
 
-a = float_range(start,stop,step)
-a = list(a)
-for i in a:
-    print(i)
+if __name__ == "__main__":
+    for line in long_lines(*sys.argv[1:]):
+        print(line)
 
+print(long_lines("file.txt"))
